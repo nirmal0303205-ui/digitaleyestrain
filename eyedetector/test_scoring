@@ -1,0 +1,27 @@
+import cv2
+
+from feature_extraction import extract_features
+from normalization import normalize_features
+from scoring import calculate_eye_comfort_score
+
+
+# Load image
+image = cv2.imread("sample.jpg")
+
+if image is None:
+    print("Image not found!")
+
+else:
+    # Step 1: Extract features
+    features = extract_features(image)
+
+    # Step 2: Normalize features
+    normalized_features = normalize_features(features)
+
+    # Step 3: Calculate Eye Comfort Score
+    score = calculate_eye_comfort_score(normalized_features)
+
+    print("\nEYE COMFORT ANALYSIS")
+    print("--------------------")
+
+    print("Eye Comfort Score:", round(score, 2), "/ 100")
